@@ -1,0 +1,23 @@
+h6, ion-label {
+  color: var(--ion-color-primary);
+}
+
+ion-card {
+  padding: 0px;
+  margin: 10px;
+}
+
+ion-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.paid {
+  background-color: var(--ion-color-success-tint);
+}
+
+ion-spinner {
+  transform: scale(2);
+}

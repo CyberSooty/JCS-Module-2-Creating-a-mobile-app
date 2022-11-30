@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Expense Dashboard</ion-title>
+    <ion-icon name="home" slot="end"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="main">
+    <div *ngIf="!expensesLoaded" class="center-within-parent">
+      <h6>Downloading data</h6>
+      <ion-spinner name="dots" color="primary"></ion-spinner>
+    </div>
+
+    <div *ngIf="expensesLoaded" class="center-within-parent">
+      <ion-grid>
+
+        <ion-row>
+          <ion-col>
+            <ion-item lines="none">
+              <h4>Unclaimed Expenses</h4>
+              <ion-badge class="unclaimed">{{numberUnclaimedExpenses}}</ion-badge>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="6" offset="3">
+            <div class="amount-card">
+              <h1>
+                £{{amountUnclaimedExpenses | number: '1.0-2'}}
+              </h1>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item lines="none">
+              <h4>Awaiting Payment</h4>
+              <ion-badge class="awaiting">{{numberAwaitingPayment}}</ion-badge>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="6" offset="3">
+            <div class="amount-card">
+              <h1>
+                £{{amountAwaitingPayment | number: '1.0-2'}}
+              </h1>
+            </div>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+    </div>
+  </div>
+
+  <app-action-button page="dashboard"></app-action-button>
+</ion-content>

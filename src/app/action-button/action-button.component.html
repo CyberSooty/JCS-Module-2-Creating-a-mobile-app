@@ -1,0 +1,22 @@
+<ion-fab slot="fixed" [vertical]="vertical" [horizontal]="horizontal">
+  <ion-fab-button>
+    <ion-icon [name]="icon"></ion-icon>
+  </ion-fab-button>
+  <ion-fab-list [side]="side">
+    <ion-fab-button (click)="showInformation()" *ngIf="page!=='information'">
+      <ion-icon name="information-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button (click)="showSettings()" *ngIf="page!=='settings'">
+      <ion-icon name="settings-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button (click)="showNewExpense()" *ngIf="page!=='new-expense'">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button (click)="showExpenseList()" *ngIf="page!=='expense-list'">
+      <ion-icon name="list-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button (click)="showDashboard()" *ngIf="page!=='dashboard'">
+      <ion-icon name="home"></ion-icon>
+    </ion-fab-button>
+  </ion-fab-list>
+</ion-fab>

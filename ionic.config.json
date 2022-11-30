@@ -1,0 +1,7 @@
+{
+  "name": "JHubCodingScheme_Module2",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

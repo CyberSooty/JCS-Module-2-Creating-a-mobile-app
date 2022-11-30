@@ -1,0 +1,15 @@
+ion-toggle {
+  --background: var(--ion-color-danger);
+  --background-checked: var(--ion-color-success)
+}
+
+ion-content {
+  position: relative;
+}
+
+.delete-button {
+  position: absolute;
+  top: 1%;
+  right: 5%;
+  // transform: translateX(-50%);
+}

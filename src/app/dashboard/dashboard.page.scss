@@ -1,0 +1,41 @@
+#main {
+  height: 90vh;
+}
+
+.center-within-parent {
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%)
+}
+
+.amount-card {
+  border: var(--ion-color-primary) solid 5px;
+  border-radius:50%;
+  position:relative;
+  height: 120px;
+  width: 120px;
+  margin-bottom:20px;
+}
+
+h1 {
+  text-align: center;
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-100%);
+}
+
+h4 {
+  margin:0;
+  white-space: nowrap;
+  font-weight: 550;
+  color:rgb(94, 92, 92)
+}
+
+ion-badge {
+  position:absolute;
+  right:0;
+  top:0;
+}
+

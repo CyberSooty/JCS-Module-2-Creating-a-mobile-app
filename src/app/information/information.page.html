@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>About this App</ion-title>
+    <ion-icon name="information-outline" slot="end"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h6>Use the action button to navigate around the App:</h6>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="1" class="ion-align-self-center"><ion-icon name="home"></ion-icon></ion-col>
+      <ion-col>
+        <p>A summary of unclaimed and unpaid expenses</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="1" class="ion-align-self-center"><ion-icon name="list-outline"></ion-icon></ion-col>
+      <ion-col>
+        <p>A list of expenses stored in the database. An expense can be edited by clicking on it</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="1" class="ion-align-self-center"><ion-icon name="add-outline"></ion-icon></ion-col>
+      <ion-col>
+        <p>Add a new expense and save to the database</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="1" class="ion-align-self-center"><ion-icon name="settings-outline"></ion-icon></ion-col>
+      <ion-col>
+        <p>Change settings</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="1" class="ion-align-self-center"><ion-icon name="information-outline"></ion-icon></ion-col>
+      <ion-col>
+        <p>About this App</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h6>Expense list icons:</h6>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="1" class="ion-align-self-center"><ion-icon name="camera-outline"></ion-icon></ion-col>
+      <ion-col>
+        <p>Green if photo of receipt stored in database</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="1" class="ion-align-self-center"><ion-icon name="desktop-outline"></ion-icon></ion-col>
+      <ion-col>
+        <p>Green if claim for expense has been made</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <app-action-button page="information"></app-action-button>
+</ion-content>

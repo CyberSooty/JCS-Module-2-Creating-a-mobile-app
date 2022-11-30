@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>App Settings</ion-title>
+    <ion-icon name="settings-outline" slot="end"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form">
+    <p>Where would you like the action button to be positioned on screen?</p>
+    <div id="phone-widget" class="center-within-item">
+      <div id="screen-diagram">
+        <div id="screen-toolbar">Hello</div>
+        <div id="screen-main-area">
+          <input type="radio" value='top-left'  id='top-left' name="fabPosition" formControlName="fabPosition" (click)="updateFabPosition('top-left')">
+          <input type="radio" value='top-right'  id='top-right' name="fabPosition" formControlName="fabPosition" (click)="updateFabPosition('top-right')">
+          <input type="radio" value='bottom-left'  id='bottom-left' name="fabPosition" formControlName="fabPosition" (click)="updateFabPosition('bottom-left')">
+          <input type="radio" value='bottom-right'  id='bottom-right' name="fabPosition" formControlName="fabPosition" (click)="updateFabPosition('bottom-right')">
+        </div>
+      </div>
+    </div>
+    <hr>
+    <p>Do you want a vertical or horizontal action button menu?</p>
+    <div id="fab-orientation">
+      <ion-segment value="vertical">
+        <ion-segment-button value="vertical" (click)="updateFabOrientation('vertical')">
+          <ion-label>Vertical</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="horizontal" (click)="updateFabOrientation('horizontal')">
+          <ion-label>Horizontal</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+  </form>
+  <app-action-button page="settings"></app-action-button>
+</ion-content>

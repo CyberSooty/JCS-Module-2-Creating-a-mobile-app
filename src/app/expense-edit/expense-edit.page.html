@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Edit Expense</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <!-- Date selection -->
+            <div class="center-within-item">
+              <ion-item lines="none">
+                <ion-datetime-button datetime="expenseDate"></ion-datetime-button>
+                <ion-modal [keepContentsMounted]="true">
+                  <ng-template>
+                    <ion-datetime
+                      id="expenseDate"
+                      formControlName="expenseDate"
+                      presentation="date">
+                    </ion-datetime>
+                  </ng-template>
+                </ion-modal>
+              </ion-item>
+            </div>
+            <!-- Amount selection -->
+            <ion-item>
+              <ion-label position="stacked">Amount</ion-label>
+              <ion-input formControlName="amount" type="number" placeholder="00.00"></ion-input>
+            </ion-item>
+            <!-- Description input -->
+            <ion-item counter="true">
+              <ion-label position="stacked">Description</ion-label>
+              <ion-input
+                formControlName="description"
+                placeholder="Enter a short description"
+                maxlength="30">
+              </ion-input>
+            </ion-item>
+            <!-- Claim input?-->
+            <ion-item>
+              <ion-label>Expense claimed?</ion-label>
+              <ion-toggle  formControlName="claimed" slot="end" color="success" (ionChange)="controlPaidToggleInput($event)"></ion-toggle>
+            </ion-item>
+            <!-- Paid input?-->
+            <ion-item>
+              <ion-label>Claim paid?</ion-label>
+              <ion-toggle  formControlName="paid" slot="end" color="success"></ion-toggle>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button
+            *ngIf="!expense.receiptCaptured"
+            type="button"
+            expand="block"
+            (click)="onPhotoRequest()"
+            color="danger">
+              Take photo of reciept
+          </ion-button>
+          <ion-button
+            *ngIf="expense.receiptCaptured"
+            type="button"
+            expand="block"
+            (click)="onPhotoRequest()"
+            color="success">
+              Retake photo
+          </ion-button>
+          <ion-button
+            type="submit"
+            expand="block"
+            (click)="onUpdate()"
+            [disabled]="form.invalid">
+              Update
+          </ion-button>
+          <ion-button
+            type="button"
+            expand="block"
+            color="danger"
+            (click)="onCancel()"
+            fill="clear">
+              <ion-icon name="close-outline" size="large"></ion-icon>
+              Cancel
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+  <div class="delete-button">
+    <ion-button
+    type="button"
+    color="danger"
+    (click)="onDelete()">
+      <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+    </ion-button>
+  </div>
+</ion-content>
+

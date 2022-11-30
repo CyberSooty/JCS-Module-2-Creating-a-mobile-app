@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Expense List</ion-title>
+    <ion-icon name="list-outline" slot="end"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="!expensesLoaded" class="center-within-item">
+    <h6>Downloading data</h6>
+    <ion-spinner name="dots" color="primary"></ion-spinner>
+  </div>
+
+  <ion-accordion-group [multiple]="true" [value]="openAccordion">
+    <ion-accordion value="unclaimed" [disabled]="unclaimedExpenses.length <= 0">
+      <ion-item slot="header" color="light">
+        <h5>Unclaimed expenses</h5>
+      </ion-item>
+      <div slot="content">
+        <ion-card *ngFor="let expense of unclaimedExpenses">
+          <ion-grid>
+            <ion-row (click)="editExpense(expense.id)">
+              <ion-col size="3">{{expense.date | date: 'd/M/yy'}}</ion-col>
+              <ion-col size="2">{{expense.amount}}</ion-col>
+              <ion-col size="3">{{expense.description}}</ion-col>
+              <ion-col size="2">
+                <ion-icon
+                  size='large'
+                  name='camera-outline'
+                  [color]="expense.receiptCaptured? 'success' : 'danger'">
+                </ion-icon>
+              </ion-col>
+              <ion-col size="2">
+                <ion-icon
+                  size='large'
+                  name='desktop-outline'
+                  [color]="expense.claimed? 'success' : 'danger'">
+                </ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </div>
+    </ion-accordion>
+    <ion-accordion value="unpaid" [disabled]="unpaidExpenses.length <= 0">
+      <ion-item slot="header" color="light">
+        <h5>Awaiting Payment</h5>
+      </ion-item>
+      <div slot="content">
+        <ion-card *ngFor="let expense of unpaidExpenses">
+          <ion-grid>
+            <ion-row (click)="editExpense(expense.id)">
+              <ion-col size="3">{{expense.date | date: 'd/M/yy'}}</ion-col>
+              <ion-col size="2">{{expense.amount}}</ion-col>
+              <ion-col size="3">{{expense.description}}</ion-col>
+              <ion-col size="2">
+                <ion-icon
+                  size='large'
+                  name='camera-outline'
+                  [color]="expense.receiptCaptured? 'success' : 'danger'">
+                </ion-icon>
+              </ion-col>
+              <ion-col size="2">
+                <ion-icon
+                  size='large'
+                  name='desktop-outline'
+                  [color]="expense.claimed? 'success' : 'danger'">
+                </ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </div>
+    </ion-accordion>
+    <ion-accordion value="paid" [disabled]="paidExpenses.length <= 0">
+      <ion-item slot="header" color="light">
+        <h5>Paid Expenses</h5>
+      </ion-item>
+      <div slot="content">
+        <ion-card *ngFor="let expense of paidExpenses">
+          <ion-grid>
+            <ion-row (click)="editExpense(expense.id)">
+              <ion-col size="3">{{expense.date | date: 'd/M/yy'}}</ion-col>
+              <ion-col size="2">{{expense.amount}}</ion-col>
+              <ion-col size="3">{{expense.description}}</ion-col>
+              <ion-col size="2">
+                <ion-icon
+                  size='large'
+                  name='camera-outline'
+                  [color]="expense.receiptCaptured? 'success' : 'danger'">
+                </ion-icon>
+              </ion-col>
+              <ion-col size="2">
+                <ion-icon
+                  size='large'
+                  name='desktop-outline'
+                  [color]="expense.claimed? 'success' : 'danger'">
+                </ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
+
+  <app-action-button page="expense-list"></app-action-button>
+</ion-content>
