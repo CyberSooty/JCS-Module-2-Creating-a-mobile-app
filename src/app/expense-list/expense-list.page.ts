@@ -24,9 +24,9 @@ export class ExpenseListPage implements OnInit, OnDestroy {
 
   ngOnInit() {
     console.log('ExpenseList ngOnInit');
-    this.initialisedSub = this.expensesService.appInitialised.subscribe(
-      initialised => {
-        this.expensesLoaded = initialised;
+    this.initialisedSub = this.expensesService.appInitialising.subscribe(
+      initialising => {
+        this.expensesLoaded = !initialising;
         console.log('AppInitialised: ', this.expensesLoaded);
       });
     this.expensesSub = this.expensesService.expenses.subscribe(

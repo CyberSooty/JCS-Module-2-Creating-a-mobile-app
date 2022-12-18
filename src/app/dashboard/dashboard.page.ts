@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Expense } from '../expense.model';
 import { ExpenseService } from '../expense.service';
 
 @Component({
@@ -10,8 +9,10 @@ import { ExpenseService } from '../expense.service';
 })
 export class DashboardPage implements OnInit, OnDestroy {
   expensesSub: Subscription;
-  initialisedSub: Subscription;
-  expensesLoaded = false;
+  initialisingSub: Subscription;
+  downloadingData = false;
+  initialisationErrorSub: Subscription;
+  initialisationError = false;
   numberUnclaimedExpenses = 0;
   amountUnclaimedExpenses = 0;
   numberAwaitingPayment: number;
@@ -21,10 +22,14 @@ export class DashboardPage implements OnInit, OnDestroy {
 
   ngOnInit() {
     console.log('Dashboard ngOnInit');
-    this.initialisedSub = this.expensesService.appInitialised.subscribe(
-      initialised => {
-        this.expensesLoaded = initialised;
-        console.log('AppInitialised: ', this.expensesLoaded);
+    this.initialisingSub = this.expensesService.appInitialising.subscribe(
+      initialising => {
+        this.downloadingData = initialising;
+      }
+    );
+    this.initialisationErrorSub = this.expensesService.appInitialisationError.subscribe(
+      error => {
+        this.initialisationError = error;
       }
     );
     this.expensesSub = this.expensesService.expenses.subscribe(
@@ -48,6 +53,6 @@ export class DashboardPage implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.expensesSub.unsubscribe();
-    this.initialisedSub.unsubscribe();
+    this.initialisingSub.unsubscribe();
   };
 }

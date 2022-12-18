@@ -9,11 +9,11 @@
     <ion-fab-button (click)="showSettings()" *ngIf="page!=='settings'">
       <ion-icon name="settings-outline"></ion-icon>
     </ion-fab-button>
-    <ion-fab-button (click)="showNewExpense()" *ngIf="page!=='new-expense'">
-      <ion-icon name="add-outline"></ion-icon>
+    <ion-fab-button [disabled]="initialisationError" (click)="showNewExpense()" *ngIf="page!=='new-expense'">
+      <ion-icon name="add-outline" [color]="!initialisationError? '' : 'medium tint'"></ion-icon>
     </ion-fab-button>
-    <ion-fab-button (click)="showExpenseList()" *ngIf="page!=='expense-list'">
-      <ion-icon name="list-outline"></ion-icon>
+    <ion-fab-button [disabled]="initialisationError" (click)="showExpenseList()" *ngIf="page!=='expense-list'">
+      <ion-icon name="list-outline" [color]="!initialisationError? '' : 'medium tint'"></ion-icon>
     </ion-fab-button>
     <ion-fab-button (click)="showDashboard()" *ngIf="page!=='dashboard'">
       <ion-icon name="home"></ion-icon>

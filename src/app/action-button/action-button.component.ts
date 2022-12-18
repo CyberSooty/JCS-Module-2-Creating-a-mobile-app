@@ -12,13 +12,16 @@ import { SettingsService } from '../settings.service';
 export class ActionButtonComponent implements OnInit, OnDestroy {
   @Input() page: string;
   settingsSub: Subscription;
+  initialisationErrorSub: Subscription;
+  initialisationError = false;
   vertical: string;
   horizontal: string;
   side: string;
   icon: string;
 
   constructor(private router: Router,
-              private settingsService: SettingsService) { }
+              private settingsService: SettingsService,
+              private expensesService: ExpenseService) { }
 
   ngOnInit(){
     this.settingsSub = this.settingsService.appSettings.subscribe( settings => {
@@ -26,6 +29,9 @@ export class ActionButtonComponent implements OnInit, OnDestroy {
       this.horizontal = settings.fabPositionHorizontal;
       this.side = settings.fabSide;
       this.icon = settings.fabIcon;
+    });
+    this.initialisationErrorSub = this.expensesService.appInitialisationError.subscribe( error => {
+      this.initialisationError = error;
     });
   }
 

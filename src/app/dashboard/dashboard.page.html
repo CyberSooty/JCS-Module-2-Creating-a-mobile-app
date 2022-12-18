@@ -6,13 +6,15 @@
 </ion-header>
 
 <ion-content>
+  <div *ngIf="downloadingData && !initialisationError" class="center-within-item">
+    <h6>Downloading data</h6>
+    <ion-spinner name="dots" color="primary"></ion-spinner>
+  </div>
+  <div *ngIf="!downloadingData && initialisationError" class="center-within-item">
+    <h6>App has failed to initialise</h6>
+  </div>
   <div id="main">
-    <div *ngIf="!expensesLoaded" class="center-within-parent">
-      <h6>Downloading data</h6>
-      <ion-spinner name="dots" color="primary"></ion-spinner>
-    </div>
-
-    <div *ngIf="expensesLoaded" class="center-within-parent">
+    <div *ngIf="!downloadingData && !initialisationError" class="center-within-parent">
       <ion-grid>
 
         <ion-row>

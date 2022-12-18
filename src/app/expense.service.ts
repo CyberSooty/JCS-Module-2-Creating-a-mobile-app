@@ -27,13 +27,18 @@ interface DatabaseExpense {
 })
 export class ExpenseService {
   databaseId: string;
-  appInitialised = new BehaviorSubject<boolean>(false);
+  appInitialising = new BehaviorSubject<boolean>(true);
+  appInitialisationError = new BehaviorSubject<boolean>(false);
   private _expenses = new BehaviorSubject<Expense[]>([]);
 
   constructor(private http: HttpClient){
     this.fetchExpenses().subscribe( (expenses) => {
       console.log(expenses);
-      this.appInitialised.next(true);
+      this.appInitialising.next(false);
+    }, error => {
+      console.log(error);
+      this.appInitialisationError.next(true);
+      this.appInitialising.next(false);
     });
   };
 

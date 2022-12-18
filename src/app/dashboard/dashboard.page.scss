@@ -39,3 +39,10 @@ ion-badge {
   top:0;
 }
 
+ion-spinner {
+  transform: scale(2);
+}
+
+h6, ion-label {
+  color: var(--ion-color-primary);
+}
