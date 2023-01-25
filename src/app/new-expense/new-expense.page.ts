@@ -22,7 +22,7 @@ export class NewExpensePage implements OnInit {
   ngOnInit() {
     this.form = new FormGroup({
       expenseDate: new FormControl(new Date().toISOString(), {updateOn:'blur', validators:[]}),
-      amount: new FormControl(null, {updateOn:'change', validators:[Validators.required, Validators.pattern(/\d+.\d\d/)]}),
+      amount: new FormControl(null, {updateOn:'change', validators:[Validators.required, Validators.pattern(/^\d{1,4}(.\d{1,2}){0,1}$/)]}),
       description: new FormControl(null, {updateOn:'change', validators:[Validators.required]}),
       claimed: new FormControl(false),
       paid: new FormControl({value:false, disabled:true})
